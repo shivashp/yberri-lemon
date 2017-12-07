@@ -3,7 +3,6 @@ import {
   View,
   Text,
 } from 'react-native';
-
 import {
   colors,layout,
 } from 'global';
