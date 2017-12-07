@@ -1,8 +1,8 @@
 const colors = {
-  primary: '',
-  secondary: '',
-  textPrimary: '',
-  textSecondary: '',
+  primary: '#FFFFFF',
+  secondary: '#F3F9FE',
+  textPrimary: '#6C6C6C',
+  textSecondary: '#7FBEFF',
 };
 
 const font = {
