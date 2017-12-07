@@ -12,8 +12,22 @@ const font = {
   family: '',
 };
 
-const styles = {
-  colors, font,
+const container = {
+  flex: 1,
+  paddingHorizontal: 10,
+  paddingVertical: 10,
 };
 
-export default styles;
+const center = {
+  alignItems: 'center',
+  justifyContent: 'center',
+};
+
+const layout = {
+  container, center,
+};
+
+export {
+  layout, colors, font,
+};
+

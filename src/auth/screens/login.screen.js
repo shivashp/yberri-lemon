@@ -2,29 +2,20 @@ import React from 'react';
 import {
   View,
   Text,
-  StyleSheet,
 } from 'react-native';
 
 import {
-  colors
-} from 'global/styles';
+  colors,layout,
+} from 'global';
 
 export class LoginScreen extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={{fontSize: 40}}>
-          Hi from the login screen
+      <View style={[layout.container, layout.center]}>
+        <Text style={{ color: colors.textPrimary }}>
+          Login Screen123
         </Text>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
