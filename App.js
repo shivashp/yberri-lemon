@@ -4,7 +4,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import { Yberri } from './routes';
+import { Yberri } from 'routes';
 
 export default class App extends React.Component {
   render() {
