@@ -1,16 +1,21 @@
 import React from 'react';
 import {
   View,
+  Text,
   StyleSheet,
 } from 'react-native';
 
-import { Yberri } from 'routes';
+import {
+  colors
+} from 'global/styles';
 
-export default class App extends React.Component {
+export class LoginScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Yberri />
+        <Text style={{fontSize: 40}}>
+          Hi from the login screen
+        </Text>
       </View>
     );
   }
@@ -19,6 +24,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
