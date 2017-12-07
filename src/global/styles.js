@@ -17,6 +17,10 @@ const container = {
   paddingHorizontal: 10,
   paddingVertical: 10,
 };
+const noPadding = {
+  paddingHorizontal: 0,
+  paddingVertical: 0,
+};
 
 const center = {
   alignItems: 'center',
@@ -24,10 +28,9 @@ const center = {
 };
 
 const layout = {
-  container, center,
+  container, center, noPadding,
 };
 
 export {
   layout, colors, font,
 };
-
