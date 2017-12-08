@@ -1,27 +1,12 @@
 import {
-  StackNavigator,
-} from 'react-navigation';
-
-import {
   LoginScreen,
-} from 'auth';
-import {
+  MenuScreen,
   TableScreen,
-} from 'components';
+} from 'screens';
+import {
+  toStackNavigator,
+  componentToScreen,
+} from 'utils';
 
-export const Yberri = StackNavigator({
-  Login: {
-    screen: LoginScreen,
-    navigationOptions: {
-      header: null,
-    },
-  },
-  Table: {
-    screen: TableScreen,
-    navigationOptions: {
-      header: null,
-    },
-  },
-}, {
-  initialRouteName: 'Table',
-});
+
+export const Yberri = toStackNavigator([MenuScreen, LoginScreen, TableScreen])(componentToScreen);

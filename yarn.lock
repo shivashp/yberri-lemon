@@ -3770,6 +3770,7 @@ jade-legacy@^1.11.1:
     jstransformer "1.0.0"
     jstransformer-markdown "^1.1.1"
     mkdirp "~0.5.0"
+    uglify-js "^2.7.5"
     void-elements "~2.0.1"
     with "~5.1.1"
 
@@ -5871,6 +5872,12 @@ react-devtools-core@^2.5.0:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
+react-native-animatable@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/react-native-animatable/-/react-native-animatable-1.2.4.tgz#b5fb7657e8f6edadbc26697057a327fb920b3039"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-branch@2.0.0-beta.3:
   version "2.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-2.0.0-beta.3.tgz#2167af86bbc9f964bd45bd5f37684e5b54965e32"
@@ -5951,7 +5958,7 @@ react-native-ui-kitten@^2.0.1:
     wintersmith "^2.3.3"
     wolfy87-eventemitter "^5.1.0"
 
-react-native-vector-icons@4.4.2:
+react-native-vector-icons@4.4.2, react-native-vector-icons@^4.4.2:
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-4.4.2.tgz#090f42ee0396c4cc4eae0ddaa518028ba8df40c7"
   dependencies:
@@ -7243,7 +7250,7 @@ uglify-es@^3.1.8:
     commander "~2.12.1"
     source-map "~0.6.1"
 
-uglify-js@^2.6:
+uglify-js@^2.6, uglify-js@^2.7.5:
   version "2.8.29"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.8.29.tgz#29c5733148057bb4e1f75df35b7a9cb72e6a59dd"
   dependencies:
