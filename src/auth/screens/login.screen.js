@@ -20,7 +20,6 @@ const Keys = [
 ];
 
 export class LoginScreen extends React.Component {
-
   constructor() {
     super();
     this.state = {

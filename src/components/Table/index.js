@@ -11,7 +11,7 @@ import * as Animatable from 'react-native-animatable';
 
 const tableObj = ['Table 1', 'Table 2', 'Table 3', 'Table 4', 'Table 5', 'Table 6', 'Table 7', 'Table 8', 'Table 9'];
 
-class Table extends Component {
+class TableScreen extends Component {
   renderTable = obj => obj.map((row, index) => {
     return <View key={index} style={styles.grid}>
             {
@@ -19,6 +19,7 @@ class Table extends Component {
             }
           </View>;
   });
+
   render() {
     return (
       <View style={[layout.container, styles.row]}>
@@ -86,4 +87,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export { Table };
+export { TableScreen };

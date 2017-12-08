@@ -32,8 +32,8 @@ Key.propTypes = {
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
-  ]),
-  onPress: PropTypes.func,
+  ]).isRequired,
+  onPress: PropTypes.func.isRequired,
 };
 
 const styles = StyleSheet.create({
