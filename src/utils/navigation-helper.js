@@ -14,7 +14,7 @@ const componentToScreen = component => ({
 const toStackNavigator = components =>
   toScreen =>
     StackNavigator(components.reduce((acc, component) =>
-      ({ ...acc, [component.name]: toScreen(component) }), {}), {initialRouteName: 'TableScreen'});
+      ({ ...acc, [component.name]: toScreen(component) }), {}), {initialRouteName: 'MenuScreen'});
 
 export {
   toStackNavigator,
