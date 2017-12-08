@@ -12,6 +12,10 @@ import {
   PinGroup,
 } from 'components';
 
+import {
+  NavigationActions
+} from 'react-navigation';
+
 const KEYS = [
   [1, 2, 3],
   [4, 5, 6],
@@ -20,6 +24,10 @@ const KEYS = [
 ];
 
 export class LoginScreen extends React.Component {
+  static navigationOptions = {
+    title: 'Login',
+  }
+
   constructor() {
     super();
     this.state = {
@@ -36,11 +44,21 @@ export class LoginScreen extends React.Component {
     } else if (this.pin.length < 4) {
       this.pin += key.toString();
     }
-
+    
     this.setState({
       visiblePins: this.pin.length,
     });
-  }
+  
+    if (this.pin.length === 4) {
+      const navigate = NavigationActions.navigate({
+        routeName: 'MenuScreen',
+        params: {},
+      });
+      this.props.navigation.dispatch(navigate);
+      
+    }
+      
+   }
 
   render() {
     const {

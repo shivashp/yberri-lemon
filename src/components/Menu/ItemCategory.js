@@ -17,19 +17,19 @@ class ItemCategory extends Component {
       totalItems: 0,
     };
     this.itemQuantity = {};
+    
   }
 
   _onPress = () => {
+    const { index, onCategoryPress } = this.props;
+    onCategoryPress(index);
     LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
-    this.setState({
-      showItems: !this.state.showItems,
-    });
   }
 
   onItemPress = (value, itemName) => {
     this.itemQuantity[itemName] = value;
-    const { onCategoryChange, name } = this.props;
-    onCategoryChange(name)(this.itemQuantity);
+    const { onCategoryChange, name, index } = this.props;
+    onCategoryChange(name, index)(this.itemQuantity);
     this.setState({
       anyItemSelected: Object.values(this.itemQuantity).map(val => val >= 1).includes(true),
       totalItems: Object.values(this.itemQuantity).reduce((acc, val) => val + acc, 0),
@@ -41,6 +41,8 @@ class ItemCategory extends Component {
     const {
       name,
       items,
+      index,
+      activeIndex,
     } = this.props;
 
 
@@ -52,18 +54,18 @@ class ItemCategory extends Component {
         <TouchableOpacity style={[styles.container, { backgroundColor: this.state.anyItemSelected ? '#B2EBF2' : null }]} onPress={this._onPress}>
           <View style={{ marginLeft: 20, flexDirection: 'row', alignItems: 'center' }}>
             
-            <Text style={{ fontFamily: 'Avenir-Book', fontSize: 25 }}> {totalItems ? totalItems : null} </Text>
+            <Text style={{ fontSize: 25 }}> {totalItems ? totalItems : null} </Text>
           </View>
 
           <View>
-            <Text style={{ fontFamily: 'Avenir-Book', fontSize: 20 }}>{name}</Text>
+            <Text style={{ fontSize: 20 }}>{name}</Text>
           </View>
 
           <View style={{ marginRight: 10 }}>
             <Icon name='ios-checkmark-circle-outline' size={40} color='#9CCC65'/>
           </View>
         </TouchableOpacity>
-        {showItems ? itemsView : null}
+        {index === activeIndex ? itemsView : null}
       </View>
     );
   }

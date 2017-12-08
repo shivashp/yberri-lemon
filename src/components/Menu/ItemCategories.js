@@ -13,8 +13,8 @@ class ItemCategories extends Component {
   
  
   render() {
-    const { itemCategories, onCategoryChange } = this.props;
-    const itemCategoriesView = itemCategories.map((itemCategory, index) => <ItemCategory name={itemCategory.name} items={itemCategory.items} key={index} onCategoryChange={onCategoryChange}/>);
+    const { itemCategories, onCategoryChange, activeIndex, onCategoryPress } = this.props;
+    const itemCategoriesView = itemCategories.map((itemCategory, index) => <ItemCategory name={itemCategory.name} items={itemCategory.items} key={index} onCategoryChange={onCategoryChange} onCategoryPress={onCategoryPress} activeIndex={activeIndex} index={index}/>);
     return (
       <ScrollView>
         {itemCategoriesView}

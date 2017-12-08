@@ -9,4 +9,4 @@ import {
 } from 'utils';
 
 
-export const Yberri = toStackNavigator([MenuScreen, LoginScreen, TableScreen])(componentToScreen);
+export const Yberri = toStackNavigator([LoginScreen, MenuScreen, TableScreen])(componentToScreen);
