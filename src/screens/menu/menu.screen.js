@@ -6,9 +6,9 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-import { ItemCategories } from 'components';
+import { ItemCategories, MenuInfoDialog } from 'components';
 
 const DATA = [
   {
@@ -66,35 +66,52 @@ class MenuScreen extends Component {
 
   static navigationOptions = {
     title: 'Food Category',
-    headerRight: <Icon name={'ios-cart-outline'} size={30} style={{marginRight: 20, padding: 20, }} />,
+    headerRight: <Icon name={'shopping-cart'} size={30} style={{ marginRight: 20, padding: 20, }} />,
+  }
+
+  static counter = (obj) => {
+    return Object.values(obj).reduce((acc, val) => acc + val, 0);
   }
 
   constructor() {
     super();
     this.state = {
-      activeIndex: 0,
+      totalCount: 0,
+      dialogVisible: false,
+      dataToDialog: {},
     };
     this.categoriesData = {};
   }
 
-  onCategoryChange = (name, index) => (data) => {
-   // alert(index);
+  onCategoryChange = name => (data) => {
     this.categoriesData[name] = data;
-    
-  };
-
-  onCategoryPress = (index) => {
-    
     this.setState({
-      activeIndex: index,
+      totalCount: Object.values(this.categoriesData).reduce((acc, val) => acc + MenuScreen.counter(val), 0),
     });
-  }
+  };
 
   _onPress = () => {
     alert(JSON.stringify(this.categoriesData));
   }
 
+  _onFabLongPress = () => {
+    this.setState({
+      dialogVisible: true,
+      dataToDialog: Object.values(this.categoriesData).reduce((acc, val) => ({ ...acc, ...val }), {}),
+    });
+  }
+  _onDialogClosePress = () => {
+    this.setState({
+      dialogVisible: false,
+    })
+  }
+
   render() {
+    const {
+      totalCount,
+      dialogVisible,
+      dataToDialog,
+    } = this.state;
     return (
       <View style={styles.container}>
         {/* <TouchableOpacity onPress={this._onPress} style={{marginTop: 100}}>
@@ -102,7 +119,13 @@ class MenuScreen extends Component {
             Done
           </Text>
         </TouchableOpacity> */}
-        <ItemCategories itemCategories={DATA} onCategoryChange={this.onCategoryChange} onCategoryPress={this.onCategoryPress} activeIndex={this.state.activeIndex}/>
+        <ItemCategories itemCategories={DATA} onCategoryChange={this.onCategoryChange} />
+        <TouchableOpacity style={styles.fabContainer} onLongPress={this._onFabLongPress}>
+
+        <Text style={{color: 'white', fontSize: 50 }}> { totalCount } </Text>
+          
+        </TouchableOpacity>
+        <MenuInfoDialog visible={dialogVisible} onClosePress={this._onDialogClosePress} data={dataToDialog}/>
       </View>
     );
   }
@@ -113,6 +136,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  fabContainer: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    backgroundColor: 'rgba(77,208,225 ,1)',
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+    marginBottom: 20,
+    marginRight: 20,
+    shadowOffset: { width: 6, height: 6 },
+    shadowColor: 'black',
+    shadowOpacity: 0.2,
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
   
 });
 

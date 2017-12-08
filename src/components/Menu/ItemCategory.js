@@ -6,7 +6,8 @@ import {
   TouchableOpacity,
   LayoutAnimation,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 class ItemCategory extends Component {
   constructor() {
@@ -21,9 +22,16 @@ class ItemCategory extends Component {
   }
 
   _onPress = () => {
-    const { index, onCategoryPress } = this.props;
+    const { index, onCategoryPress, activeIndex } = this.props;
     onCategoryPress(index);
+    
     LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
+    if (activeIndex === index) {
+      // this.setState({
+      //   showItems: !this.state.showItems,
+      // });
+    }
+    
   }
 
   onItemPress = (value, itemName) => {
@@ -37,12 +45,13 @@ class ItemCategory extends Component {
   }
 
   render() {
-    const { showItems, totalItems } = this.state;
+    const { totalItems } = this.state;
     const {
       name,
       items,
       index,
       activeIndex,
+      iconName,
     } = this.props;
 
 
@@ -51,21 +60,21 @@ class ItemCategory extends Component {
 
     return (
       <View>
-        <TouchableOpacity style={[styles.container, { backgroundColor: this.state.anyItemSelected ? '#B2EBF2' : null }]} onPress={this._onPress}>
+        <TouchableOpacity style={[styles.container, { backgroundColor: this.state.anyItemSelected ? 'rgba(230,238,156 ,0.8)' : '#ffffff' }]} onPress={this._onPress}>
           <View style={{ marginLeft: 20, flexDirection: 'row', alignItems: 'center' }}>
+            <Icon name={iconName} size={30} />
             
-            <Text style={{ fontSize: 25 }}> {totalItems ? totalItems : null} </Text>
           </View>
 
           <View>
-            <Text style={{ fontSize: 20 }}>{name}</Text>
+            <Text style={{ fontSize: 23, fontFamily: 'ChalkboardSE-Regular', color: 'black' }}>{name}</Text>
           </View>
 
           <View style={{ marginRight: 10 }}>
-            <Icon name='ios-checkmark-circle-outline' size={40} color='#9CCC65'/>
+            <Text style={{ fontSize: 25, fontFamily: 'ChalkboardSE-Regular' }}> {totalItems ? totalItems : null} </Text>
           </View>
         </TouchableOpacity>
-        {index === activeIndex ? itemsView : null}
+        {activeIndex.isopen && activeIndex.index === index ? itemsView : null}
       </View>
     );
   }
@@ -88,7 +97,7 @@ class Item extends React.Component {
   }
 
   _onPress = (value) => {
-    const { onItemPress, name } = this.props;
+    const { onItemPress, name, iconName } = this.props;
     //call the props
     
 
@@ -124,16 +133,16 @@ class Item extends React.Component {
     } = this.state;
     return (
       <View style={styles.itemContainer}>
-        <Text style={{ fontSize: 19, fontWeight: '400' }}>{name}</Text>
+        <Text style={{ fontSize: 19, fontWeight: '400', fontFamily: 'ChalkboardSE-Regular' }}>{name}</Text>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <TouchableOpacity style={{padding: 20}} onPress={() => this._onPress('LEFT')}>
-            <Icon name='md-arrow-dropleft' size={50} color={this.state.quantity <= 0 ? '#BDBDBD' : '#26C6DA'} />
+          <TouchableOpacity style={{ padding: 20 }} onPress={() => this._onPress('LEFT')}>
+            <Icon name='arrow-down' size={30} color={this.state.quantity <= 0 ? '#BDBDBD' : '#26C6DA'} />
           </TouchableOpacity>
-          <Text style={{ fontSize: 22 }}>
+          <Text style={{ fontSize: 22, fontFamily: 'ChalkboardSE-Regular' }}>
             { quantity }
           </Text>
           <TouchableOpacity style={{padding: 20}} onPress={() => this._onPress('RIGHT')}>
-            <Icon name='md-arrow-dropright' size={50} color='#26C6DA'/>
+            <Icon name='arrow-up' size={30} color='#26C6DA'/>
           </TouchableOpacity>
           
           
@@ -153,15 +162,27 @@ const styles = StyleSheet.create({
     margin: 1,
     borderBottomWidth: 0.2,
     borderColor: '#26C6DA',
+    borderRadius: 20,
+    margin: 4,
+    marginRight: 10,
+    marginLeft: 10,
   },
   itemContainer: {
     height: 60, 
     justifyContent: 'space-between',
     paddingLeft: 30,
-    borderBottomWidth: 0.2,
-    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+    
+    backgroundColor: 'rgba(255, 255, 255, 1)',
     flexDirection: 'row',
     alignItems: 'center',
+    marginLeft: 20,
+    marginRight: 20,
+    marginTop: 3,
+    marginBottom :3,
+    borderRadius: 20,
+    shadowOffset:{  width: 3,  height: 3,  },
+    shadowColor: 'black',
+    shadowOpacity: 0.1,
 
   }
 });
