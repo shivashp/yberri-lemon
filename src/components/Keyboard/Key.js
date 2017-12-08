@@ -1,32 +1,23 @@
 import React from 'react';
 import {
-  View,
   Text,
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
 import PropTypes from 'prop-types';
 
-class Key extends React.Component {
-  render() {
-    const {
-      value,
-      onPress,
-    } = this.props;
-
-    return (
-      <TouchableOpacity
-        style={styles.container}
-        onPress={onPress}
-      >
-        <Text style={styles.text}>
-          {value}
-        </Text>
-      </TouchableOpacity>
-    );
-  }
-}
-
+const Key = ({ value, onPress }) =>  {
+  return (
+    <TouchableOpacity
+      style={styles.container}
+      onPress={onPress}
+    >
+      <Text style={styles.text}>
+        {value}
+      </Text>
+    </TouchableOpacity>
+  );
+};
 
 Key.propTypes = {
   value: PropTypes.oneOfType([

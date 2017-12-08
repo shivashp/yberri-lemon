@@ -1,8 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   View,
-  Text,
-  StyleSheet
+  StyleSheet,
 } from 'react-native';
 import _ from 'lodash';
 
@@ -11,7 +11,7 @@ class PinGroup extends React.Component {
   render() {
     const {
       pins,
-      visiblePins
+      visiblePins,
     } = this.props;
 
     const pinViews = _.times(pins, index => <Pin key={index} ink={(index + 1) <= visiblePins}/>);
@@ -29,6 +29,15 @@ const Pin = ({ ink }) => {
     <View style={[styles.pinContainer,{ backgroundColor: ink ? 'black' : null }]}>
     </View>
   );
+};
+
+PinGroup.propTypes = {
+  pins: PropTypes.number.isRequired,
+  visiblePins: PropTypes.number.isRequired,
+};
+
+Pin.propTypes = {
+  ink: PropTypes.bool.isRequired,
 };
 
 const styles = StyleSheet.create({

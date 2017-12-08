@@ -12,7 +12,7 @@ import {
   PinGroup,
 } from 'components';
 
-const Keys = [
+const KEYS = [
   [1, 2, 3],
   [4, 5, 6],
   [7, 8 ,9],
@@ -53,7 +53,7 @@ export class LoginScreen extends React.Component {
         <View style={{flex: 1}}>
           <PinGroup pins={4} visiblePins={visiblePins} />
         </View>
-        <KeyGroup values={Keys} onPress={this.onPress}/>
+        <KeyGroup values={KEYS} onPress={this.onPress}/>
 
       </View>
     );
