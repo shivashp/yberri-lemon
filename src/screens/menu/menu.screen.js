@@ -122,7 +122,7 @@ class MenuScreen extends Component {
         <ItemCategories itemCategories={DATA} onCategoryChange={this.onCategoryChange} />
         <TouchableOpacity style={styles.fabContainer} onLongPress={this._onFabLongPress}>
 
-        <Text style={{color: 'white', fontSize: 50 }}> { totalCount } </Text>
+        <Text style={{color: 'white', fontSize: 50, fontFamily: 'ChalkboardSE-Regular', backgroundColor:'rgba(0, 0, 0, 0)' }}> { totalCount } </Text>
           
         </TouchableOpacity>
         <MenuInfoDialog visible={dialogVisible} onClosePress={this._onDialogClosePress} data={dataToDialog}/>

@@ -36,7 +36,7 @@ class MenuInfoDialog extends React.Component {
     } = this.props;
 
     const itemViews = Object.entries(data).filter(val => val[1] > 0).map((val, index) => <Item name={val[0]} quantity={val[1]} key={index} />)
-
+    const totalQuantity = Object.values(data).filter(val => /[\d]+/.exec(val) !== null).reduce((acc, val) => acc + parseInt(val, 10), 0);
     return (
       
         
@@ -48,7 +48,10 @@ class MenuInfoDialog extends React.Component {
             <View style={{ alignItems: 'center' }}>
               <Text style={styles.title}> Food Order </Text>
             </View>
+            <Item name='Food' quantity={'Qty.'} style={{backgroundColor: 'rgba(77,208,225 ,1)', height: 70 }} textStyle={{ color: 'white', fontSize: 20 }}/>
             {itemViews}
+            <Item name={'Total Qty'} quantity={totalQuantity} style={{backgroundColor: 'rgba(77, 208, 225 , 1)', height: 60, marginTop: 20 }} textStyle={{color: 'white', fontSize: 20 }}/>
+            <Item name={'Total Price'} quantity={'Rs.1003/.'} style={{backgroundColor: 'rgba(77, 208, 225 , 1)', height: 60 }} textStyle={{color: 'white', fontSize: 20 }}/>
 
           </ScrollView>
           </Modal>
@@ -62,15 +65,16 @@ MenuInfoDialog.defaultProps = {
 };
 
 
-const Item = ({ name, quantity }) => {
+const Item = ({ name, quantity, style, textStyle }) => {
   return (
-    <View style={styles.itemContainer}>
-      <Text style={styles.itemText}>
+    <View style={[styles.itemContainer, style]}>
+      <Text style={[styles.itemText, textStyle] }>
         {name}
       </Text>
-      <Text style={styles.itemText}>
+      <Text style={[styles.itemText, textStyle]}>
         {quantity}
       </Text>
+
     </View>
   );
 };
@@ -84,7 +88,7 @@ const styles = StyleSheet.create({
     
   },
   itemContainer: {
-    height: 70, 
+    height: 50, 
     justifyContent: 'space-between',
     paddingLeft: 30,
     backgroundColor: 'rgba(255, 255, 255, 1)',
@@ -98,6 +102,7 @@ const styles = StyleSheet.create({
     shadowOffset:{  width: 3,  height: 3,  },
     shadowColor: 'black',
     shadowOpacity: 0.1,
+    paddingRight: 20
 
   },
   title: {

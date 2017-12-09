@@ -64,7 +64,7 @@ export class LoginScreen extends React.Component {
 
     return (
       <View style={[layout.container, layout.noPadding, styles.container]}>
-        <View style={{flex: 1}}>
+        <View style={{ flex: 1 }}>
           <PinGroup pins={4} visiblePins={visiblePins} />
         </View>
         <KeyGroup values={KEYS} onPress={this.onPress}/>
