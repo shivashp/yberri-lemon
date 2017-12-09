@@ -1,16 +1,21 @@
+import {
+  Platform,
+} from 'react-native';
+
 const colors = {
   primary: '#4aa7f1',
   secondary: '#d6dae7',
   textPrimary: '#5d5f5e',
   textSecondary: '#4aa7f1',
   textLight: 'white',
+  lightBackground: '#ebf1f8',
 
 };
 
 const font = {
-  larger: 18,
-  large: 16,
-  regular: 14,
+  larger: Platform.OS === 'ios' ? 30 : 25,
+  large: Platform.OS === 'ios' ? 20 : 16,
+  regular: Platform.OS === 'ios' ? 18 : 14,
   small: 12,
   family: 'Roboto',
 };

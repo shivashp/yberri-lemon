@@ -41,7 +41,7 @@ class MenuInfoDialog extends React.Component {
     const itemViews = Object.entries(data).filter(val => val[1] > 0).map((val, index) => <Item name={val[0]} quantity={val[1]} key={index} />)
     const totalQuantity = Object.values(data).filter(val => /[\d]+/.exec(val) !== null).reduce((acc, val) => acc + parseInt(val, 10), 0);
     return (
-      
+       
         
         <Modal visible={visible} onDismiss={this.onDismiss} animationType='slide' transparent>
           <ScrollView style={styles.container}>

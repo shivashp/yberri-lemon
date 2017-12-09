@@ -126,7 +126,7 @@ class MenuScreen extends Component {
             Done
           </Text>
         </TouchableOpacity> */}
-        <Card> <Text>HI ther </Text></Card>
+        
         <ItemCategories itemCategories={DATA} onCategoryChange={this.onCategoryChange} />
         <TouchableOpacity style={styles.fabContainer} onLongPress={this._onFabLongPress} onPress={this._onPress}>
 

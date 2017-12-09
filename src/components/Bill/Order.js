@@ -1,28 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  View, Text, StyleSheet,
+  View, Text, StyleSheet, Platform,
 } from 'react-native';
 import {
-  layout, button, colors, font,
+  button, colors, font,
 } from 'global';
 import {
-  Button,
+  Button, Card,
 } from 'yberri';
+
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 const Order = ({ item, index, handler }) => {
   return (
-    <View style={[styles.container, layout.borderBottom]}>
+    <Card style={styles.container}>
       <View style={styles.itemDesc}>
         <Text style={[styles.name, styles.bold]}>{item.name}</Text>
         <Text style={styles.price}>Rs. {item.price}</Text>
       </View>
       <View style={styles.itemHandle}>
-        <Button style={styles.filled} onPress={() => handler(index)('reduce')}>-</Button>
-        <Text style={styles.qty}>{item.qty}</Text>
-        <Button style={styles.filled} onPress={() => handler(index)('add')}>+</Button>
+        <Button onPress={() => handler(index)('reduce')}>
+          <Icon name='arrow-down' size={font.large} color={item.quantity <= 0 ? '#BDBDBD' : colors.primary} />
+        </Button>
+        <Text style={{ fontSize: font.larger - 3, fontFamily: Platform.OS === 'ios' ? 'ChalkboardSE-Regular' : 'Roboto' }}>
+          {item.qty}
+        </Text>
+        <Button onPress={() => handler(index)('add')}>
+          <Icon name='arrow-up' size={font.large} color={colors.primary}/>
+        </Button>
       </View>
-    </View>
+    </Card>
   );
 };
 
@@ -32,23 +41,19 @@ Order.propTypes = {
   handler: PropTypes.func.isRequired,
 };
 
-// Order.defaultProps = {
-//   qty: 0,
-// };
-
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 20,
+    paddingHorizontal: 20,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-between',    
   },
   bold: {
     fontWeight: 'bold',
     color: '#5C6E7C',
   },
   name: {
-    fontSize: font.larger,
-    marginBottom: 7,
+    fontSize: font.large,
+    marginBottom: 3,
     letterSpacing: 2,
   },
   price: {
@@ -64,13 +69,17 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 15,
     borderColor: colors.darker,
-    marginHorizontal: 15,
+    marginHorizontal: 5,
     maxHeight: 40,
     color: '#5C6E7C',
   },
   filled: {
     ...button.filled,
+    backgroundColor: colors.primary,
   },
 });
 
-export default Order;
+export { 
+  Order,
+}
+
