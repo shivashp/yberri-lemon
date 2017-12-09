@@ -18,9 +18,9 @@ const Order = ({ item, index, handler }) => {
         <Text style={styles.price}>Rs. {item.price}</Text>
       </View>
       <View style={styles.itemHandle}>
-        <Button style={button.filled} onPress={() => handler(index)('reduce')}>-</Button>
+        <Button style={styles.filled} onPress={() => handler(index)('reduce')}>-</Button>
         <Text style={styles.qty}>{item.qty}</Text>
-        <Button style={button.filled} onPress={() => handler(index)('add')}>+</Button>
+        <Button style={styles.filled} onPress={() => handler(index)('add')}>+</Button>
       </View>
     </View>
   );
@@ -67,6 +67,9 @@ const styles = StyleSheet.create({
     marginHorizontal: 15,
     maxHeight: 40,
     color: '#5C6E7C',
+  },
+  filled: {
+    ...button.filled,
   },
 });
 

@@ -6,6 +6,7 @@ import {
   Modal,
   TouchableOpacity,
   ScrollView,
+  Platform,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -93,23 +94,23 @@ const styles = StyleSheet.create({
     height: 50, 
     justifyContent: 'space-between',
     paddingLeft: 30,
-    backgroundColor: 'rgba(255, 255, 255, 1)',
+    backgroundColor: 'white',
     flexDirection: 'row',
     alignItems: 'center',
     marginLeft: 20,
     marginRight: 20,
     marginTop: 3,
-    marginBottom: 3,
+    marginBottom: 3,    
     borderRadius: 20,
     shadowOffset:{  width: 3,  height: 3,  },
     shadowColor: 'black',
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.2,    
     paddingRight: 20
 
   },
   title: {
     fontSize: 30,
-    fontFamily: 'ChalkboardSE-Regular',
+    fontFamily: Platform.OS === 'ios' ? 'ChalkboardSE-Regular' : 'Roboto',
     marginBottom: 20,
     color: colors.textPrimary,
     fontWeight: 'bold',
@@ -117,7 +118,7 @@ const styles = StyleSheet.create({
   itemText: {
     fontSize: 20, 
     marginRight: 20,
-    fontFamily: 'ChalkboardSE-Regular',
+    fontFamily: Platform.OS === 'ios' ? 'ChalkboardSE-Regular' : 'Roboto',
     color: colors.textPrimary,
   },
 });

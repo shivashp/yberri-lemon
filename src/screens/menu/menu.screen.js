@@ -5,7 +5,9 @@ import {
   ScrollView,
   StyleSheet,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
+import { NavigationActions } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { ItemCategories, MenuInfoDialog } from 'components';
@@ -92,7 +94,10 @@ class MenuScreen extends Component {
   };
 
   _onPress = () => {
-    alert(JSON.stringify(this.categoriesData));
+    const navigateAction = NavigationActions.navigate({
+      routeName: 'BillScreen',
+    });
+    this.props.navigation.dispatch(navigateAction);
   }
 
   _onFabLongPress = () => {
@@ -121,9 +126,9 @@ class MenuScreen extends Component {
           </Text>
         </TouchableOpacity> */}
         <ItemCategories itemCategories={DATA} onCategoryChange={this.onCategoryChange} />
-        <TouchableOpacity style={styles.fabContainer} onLongPress={this._onFabLongPress}>
+        <TouchableOpacity style={styles.fabContainer} onLongPress={this._onFabLongPress} onPress={this._onPress}>
 
-        <Text style={{color: 'white', fontSize: 40, fontFamily: 'ChalkboardSE-Regular', backgroundColor:'rgba(0, 0, 0, 0)' }}> { totalCount } </Text>
+        <Text style={{color: 'white', fontSize: 40, fontFamily: Platform.OS === 'ios' ? 'ChalkboardSE-Regular' : 'Roboto', backgroundColor:'rgba(0, 0, 0, 0)' }}> { totalCount } </Text>
           
         </TouchableOpacity>
         <MenuInfoDialog visible={dialogVisible} onClosePress={this._onDialogClosePress} data={dataToDialog}/>

@@ -11,7 +11,7 @@ import Order from './Order';
 
 import { Orders } from './ordersData';
 
-class Bill extends Component {
+class BillScreen extends Component {
   state = {
     orders: Orders,
   }
@@ -70,7 +70,7 @@ class Bill extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.primary,
+    backgroundColor: '#fff',
     paddingTop: 10,
   },
   headerBar: {
@@ -123,5 +123,5 @@ const styles = StyleSheet.create({
 });
 
 export {
-  Bill,
+  BillScreen,
 };

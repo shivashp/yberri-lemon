@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   LayoutAnimation,
+  Platform, 
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -69,11 +70,11 @@ class ItemCategory extends Component {
           </View>
 
           <View>
-            <Text style={{ fontSize: 23, fontFamily: 'ChalkboardSE-Regular', color: colors.textPrimary }}>{name}</Text>
+            <Text style={{ fontSize: 23, fontFamily: Platform.OS === 'ios' ? 'ChalkboardSE-Regular' : 'Roboto', color: colors.textPrimary }}>{name}</Text>
           </View>
 
           <View style={{ marginRight: 10 }}>
-            <Text style={{ fontSize: 25, fontFamily: 'ChalkboardSE-Regular' }}> {totalItems ? totalItems : null} </Text>
+            <Text style={{ fontSize: 25, fontFamily: Platform.OS === 'ios' ? 'ChalkboardSE-Regular' : 'Roboto' }}> {totalItems ? totalItems : null} </Text>
           </View>
         </TouchableOpacity>
         {activeIndex.isopen && activeIndex.index === index ? itemsView : null}
@@ -135,12 +136,12 @@ class Item extends React.Component {
     } = this.state;
     return (
       <View style={styles.itemContainer}>
-        <Text style={{ fontSize: 19, fontWeight: '400', fontFamily: 'ChalkboardSE-Regular' }}>{name}</Text>
+        <Text style={{ fontSize: 19, fontWeight: '400', fontFamily: Platform.OS === 'ios' ? 'ChalkboardSE-Regular' : 'Roboto' }}>{name}</Text>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <TouchableOpacity style={{ padding: 20 }} onPress={() => this._onPress('LEFT')}>
             <Icon name='arrow-down' size={30} color={this.state.quantity <= 0 ? '#BDBDBD' : colors.primary} />
           </TouchableOpacity>
-          <Text style={{ fontSize: 22, fontFamily: 'ChalkboardSE-Regular' }}>
+          <Text style={{ fontSize: 22, fontFamily: Platform.OS === 'ios' ? 'ChalkboardSE-Regular' : 'Roboto' }}>
             { quantity }
           </Text>
           <TouchableOpacity style={{padding: 20}} onPress={() => this._onPress('RIGHT')}>
