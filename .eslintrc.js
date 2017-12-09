@@ -26,5 +26,7 @@ module.exports = {
     "comma-spacing":0,
     "import/prefer-default-export": 0,
     "no-underscore-dangle": 0,
+    "arrow-parens" : 0,
+    
   }
 };

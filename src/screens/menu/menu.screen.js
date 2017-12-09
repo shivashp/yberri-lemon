@@ -9,6 +9,7 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { ItemCategories, MenuInfoDialog } from 'components';
+import { Card } from 'yberri';
 import { colors } from 'global';
 
 const DATA = [
@@ -120,6 +121,7 @@ class MenuScreen extends Component {
             Done
           </Text>
         </TouchableOpacity> */}
+        <Card> <Text>HI ther </Text></Card>
         <ItemCategories itemCategories={DATA} onCategoryChange={this.onCategoryChange} />
         <TouchableOpacity style={styles.fabContainer} onLongPress={this._onFabLongPress}>
 
