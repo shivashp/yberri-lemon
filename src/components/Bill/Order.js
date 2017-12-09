@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   },
   bold: {
     fontWeight: 'bold',
-    color: colors.textPrimary,
+    color: '#5C6E7C',
   },
   name: {
     fontSize: font.larger,
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     letterSpacing: 2,
   },
   price: {
-    color: colors.textPrimary,
+    color: '#838F99',
     fontWeight: '300',
   },
   itemHandle: {
@@ -66,6 +66,7 @@ const styles = StyleSheet.create({
     borderColor: colors.darker,
     marginHorizontal: 15,
     maxHeight: 40,
+    color: '#5C6E7C',
   },
 });
 
