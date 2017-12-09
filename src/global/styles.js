@@ -1,9 +1,10 @@
 const colors = {
-  primary: '#FFFFFF',
-  secondary: '#F3F9FE',
-  darker: '#C5D1D8',
-  textPrimary: '#6C6C6C',
-  textSecondary: '#7FBEFF',
+  primary: '#4aa7f1',
+  secondary: '#d6dae7',
+  textPrimary: '#5d5f5e',
+  textSecondary: '#4aa7f1',
+  textLight: 'white',
+
 };
 
 const font = {

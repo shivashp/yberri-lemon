@@ -5,7 +5,7 @@ import { StackNavigator } from 'react-navigation';
 const componentToScreen = component => ({
   screen: component,
   navigationOptions: {
-    header: null,
+    
   },
 });
 
