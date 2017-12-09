@@ -9,6 +9,8 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+import { colors } from 'global';
+
 /*
   props format data 
   {momo: 4, chowmis: 5, 'mams': 10}
@@ -43,15 +45,15 @@ class MenuInfoDialog extends React.Component {
         <Modal visible={visible} onDismiss={this.onDismiss} animationType='slide' transparent>
           <ScrollView style={styles.container}>
             <TouchableOpacity style={{ alignSelf: 'flex-end', marginRight: 20, }} onPress={this.onPress}>
-              <Icon name='close' size={50} />
+              <Icon name='close' size={50} color={colors.textPrimary}/>
             </TouchableOpacity>
             <View style={{ alignItems: 'center' }}>
               <Text style={styles.title}> Food Order </Text>
             </View>
-            <Item name='Food' quantity={'Qty.'} style={{backgroundColor: 'rgba(77,208,225 ,1)', height: 70 }} textStyle={{ color: 'white', fontSize: 20 }}/>
+            <Item name='Food' quantity={'Qty.'} style={{backgroundColor: colors.primary, height: 70 }} textStyle={{ color: colors.textLight, fontSize: 20 }}/>
             {itemViews}
-            <Item name={'Total Qty'} quantity={totalQuantity} style={{backgroundColor: 'rgba(77, 208, 225 , 1)', height: 60, marginTop: 20 }} textStyle={{color: 'white', fontSize: 20 }}/>
-            <Item name={'Total Price'} quantity={'Rs.1003/.'} style={{backgroundColor: 'rgba(77, 208, 225 , 1)', height: 60 }} textStyle={{color: 'white', fontSize: 20 }}/>
+            <Item name={'Total Qty'} quantity={totalQuantity} style={{backgroundColor: colors.primary, height: 60, marginTop: 20 }} textStyle={{color: colors.textLight, fontSize: 20 }}/>
+            <Item name={'Total Price'} quantity={'Rs.1003/.'} style={{backgroundColor: colors.primary, height: 60 }} textStyle={{color: colors.textLight, fontSize: 20 }}/>
 
           </ScrollView>
           </Modal>
@@ -109,11 +111,14 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontFamily: 'ChalkboardSE-Regular',
     marginBottom: 20,
+    color: colors.textPrimary,
+    fontWeight: 'bold',
   },
   itemText: {
     fontSize: 20, 
     marginRight: 20,
     fontFamily: 'ChalkboardSE-Regular',
+    color: colors.textPrimary,
   },
 });
 

@@ -9,6 +9,7 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { ItemCategories, MenuInfoDialog } from 'components';
+import { colors } from 'global';
 
 const DATA = [
   {
@@ -122,7 +123,7 @@ class MenuScreen extends Component {
         <ItemCategories itemCategories={DATA} onCategoryChange={this.onCategoryChange} />
         <TouchableOpacity style={styles.fabContainer} onLongPress={this._onFabLongPress}>
 
-        <Text style={{color: 'white', fontSize: 50, fontFamily: 'ChalkboardSE-Regular', backgroundColor:'rgba(0, 0, 0, 0)' }}> { totalCount } </Text>
+        <Text style={{color: 'white', fontSize: 40, fontFamily: 'ChalkboardSE-Regular', backgroundColor:'rgba(0, 0, 0, 0)' }}> { totalCount } </Text>
           
         </TouchableOpacity>
         <MenuInfoDialog visible={dialogVisible} onClosePress={this._onDialogClosePress} data={dataToDialog}/>
@@ -135,12 +136,13 @@ class MenuScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#ebf1f8'
   },
   fabContainer: {
-    width: 100,
-    height: 100,
+    width: 90,
+    height: 90,
     borderRadius: 50,
-    backgroundColor: 'rgba(77,208,225 ,1)',
+    backgroundColor: colors.primary,
     position: 'absolute',
     bottom: 0,
     right: 0,

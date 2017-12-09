@@ -8,6 +8,8 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+import { colors } from 'global';
+
 
 class ItemCategory extends Component {
   constructor() {
@@ -60,14 +62,14 @@ class ItemCategory extends Component {
 
     return (
       <View>
-        <TouchableOpacity style={[styles.container, { backgroundColor: this.state.anyItemSelected ? 'rgba(230,238,156 ,0.8)' : '#ffffff' }]} onPress={this._onPress}>
+        <TouchableOpacity style={[styles.container, { backgroundColor: this.state.anyItemSelected ? '#d6dae7' : '#ffffff' }]} onPress={this._onPress}>
           <View style={{ marginLeft: 20, flexDirection: 'row', alignItems: 'center' }}>
-            <Icon name={iconName} size={30} />
+            <Icon name={iconName} size={30} color={colors.textPrimary} />
             
           </View>
 
           <View>
-            <Text style={{ fontSize: 23, fontFamily: 'ChalkboardSE-Regular', color: 'black' }}>{name}</Text>
+            <Text style={{ fontSize: 23, fontFamily: 'ChalkboardSE-Regular', color: colors.textPrimary }}>{name}</Text>
           </View>
 
           <View style={{ marginRight: 10 }}>
@@ -136,13 +138,13 @@ class Item extends React.Component {
         <Text style={{ fontSize: 19, fontWeight: '400', fontFamily: 'ChalkboardSE-Regular' }}>{name}</Text>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <TouchableOpacity style={{ padding: 20 }} onPress={() => this._onPress('LEFT')}>
-            <Icon name='arrow-down' size={30} color={this.state.quantity <= 0 ? '#BDBDBD' : '#26C6DA'} />
+            <Icon name='arrow-down' size={30} color={this.state.quantity <= 0 ? '#BDBDBD' : colors.primary} />
           </TouchableOpacity>
           <Text style={{ fontSize: 22, fontFamily: 'ChalkboardSE-Regular' }}>
             { quantity }
           </Text>
           <TouchableOpacity style={{padding: 20}} onPress={() => this._onPress('RIGHT')}>
-            <Icon name='arrow-up' size={30} color='#26C6DA'/>
+            <Icon name='arrow-up' size={30} color={colors.primary}/>
           </TouchableOpacity>
           
           
@@ -154,7 +156,7 @@ class Item extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: 90,
+    height: 80,
     backgroundColor: 'rgba(255, 255, 255, 1)',
     justifyContent: 'space-between',
     flexDirection: 'row',

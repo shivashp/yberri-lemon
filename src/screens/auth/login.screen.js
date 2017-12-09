@@ -2,6 +2,7 @@ import React from 'react';
 import {
   View,
   StyleSheet,
+  Text,
 } from 'react-native';
 import {
   layout,
@@ -13,7 +14,7 @@ import {
 } from 'components';
 
 import {
-  NavigationActions
+  NavigationActions,
 } from 'react-navigation';
 
 const KEYS = [
@@ -63,12 +64,12 @@ export class LoginScreen extends React.Component {
     } = this.state;
 
     return (
-      <View style={[layout.container, layout.noPadding, styles.container]}>
-        <View style={{ flex: 1 }}>
-          <PinGroup pins={4} visiblePins={visiblePins} />
-        </View>
+      <View style={{ flex: 1, flexDirection: 'column' }}>
+        
+        <PinGroup pins={4} visiblePins={visiblePins} />
+        
         <KeyGroup values={KEYS} onPress={this.onPress}/>
-
+        <Text> H </Text>
       </View>
     );
   }
@@ -76,7 +77,5 @@ export class LoginScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'flex-end',
   },
 });
